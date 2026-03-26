@@ -1,3 +1,6 @@
+import os
+import sys
+import configparser
 import tkinter as tk
 import threading
 import re
@@ -6,8 +9,29 @@ import pyperclip
 from PIL import Image, ImageEnhance, ImageTk
 import pytesseract
 
-# NOTE: If on Windows, ensure this path points to your Tesseract installation!
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+def load_tesseract_path():
+    config = configparser.ConfigParser()
+    config_file = 'config.ini'
+    
+    # Default path
+    default_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+    if not os.path.exists(config_file):
+        # Create the file if it's missing
+        config['SETTINGS'] = {'TesseractPath': default_path}
+        with open(config_file, 'w') as f:
+            config.write(f)
+        return default_path
+    else:
+        # Read the path from the file
+        config.read(config_file)
+        try:
+            return config['SETTINGS']['TesseractPath']
+        except KeyError:
+            return default_path
+
+# Apply the path
+pytesseract.pytesseract.tesseract_cmd = load_tesseract_path()
 
 class NumLensSnipper:
     def __init__(self):

@@ -43,6 +43,7 @@ python numsnip.py
 2. The screen will "freeze." Click and drag a tight box around the number you want to copy.
 3. Release the mouse button.
 4. The app will flash green and display the result. The number is now in your clipboard, ready to be pasted (Ctrl + V).
+5. To use a custom Tesseract location, simply edit the config.ini file that appears after the first run and change the TesseractPath line.
 
 ---
 ## 💡 Best Practices for 100% Accuracy
