@@ -28,7 +28,7 @@ NumSnip requires the Tesseract binary to perform text recognition.
 Clone this repository and install the required Python libraries:
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/NumSnip.git](https://github.com/YOUR_USERNAME/NumSnip.git)
+git clone [NumSnip.git](https://github.com/fatimaeg/NumSnip.git)
 cd NumSnip
 pip install -r requirements.txt
 ```
